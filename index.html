@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toolify - Your all-in-one online toolbox. Access free tools for text, image, design, finance, cybersecurity, and more. Simplify your tasks with Toolify!">
+  <meta name="keywords" content="online tools, free tools, text tools, image tools, design tools, finance tools, cybersecurity tools, Toolify">
+  <meta name="author" content="Toolify Team">
+  <title>Toolify - Your All-in-One Online Toolbox</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-theme {
+      background-color: #050A30;
+      color: #fff;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-theme header {
+      background: linear-gradient(135deg, #1E3A8A, #050A30);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .search-bar {
+      margin: 20px auto;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.9);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark-theme .search-bar input {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .categories {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .categories h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .category-buttons button {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    body.dark-theme .category-buttons button {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .category-buttons button:hover {
+      background: #6a11cb;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    body.dark-theme .tool-card {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-card i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #6a11cb;
+    }
+
+    body.dark-theme .tool-card i {
+      color: #ff9c01;
+    }
+
+    .tool-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    body.dark-theme .tool-card h3 {
+      color: #fff;
+    }
+
+    .tool-card p {
+      font-size: 0.9rem;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    body.dark-theme .tool-card p {
+      color: #ddd;
+    }
+
+    .tool-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ad-section {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark-theme .ad-section {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    body.dark-theme footer {
+      background: #1E3A8A;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    #theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      border-radius: 50%;
+      border: none;
+      background-color: #6a11cb;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    #theme-toggle:hover {
+      background-color: #2575fc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Toolify</h1>
+    <p>Your All-in-One Online Toolbox</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for tools...">
+    </div>
+  </header>
+
+  <!-- Ad Section (Top) -->
+  <div class="ad-section">
+    <p>Ad Space (Top) - Demo Ad Content</p>
+  </div>
+
+  <section class="categories">
+    <h2>Categories</h2>
+    <div class="category-buttons">
+      <button data-category="all">All</button>
+      <button data-category="text">Text Tools</button>
+      <button data-category="image">Image Tools</button>
+      <button data-category="design">Design Tools</button>
+      <button data-category="finance">Financial Tools</button>
+      <button data-category="security">Cybersecurity Tools</button>
+    </div>
+  </section>
+
+  <section class="tools-grid">
+    <!-- Text Tools -->
+    <div class="tool-card" data-category="text">
+      <a href="https://demo.toolify.com/case-converter" target="_blank">
+        <i class="fas fa-text-height"></i>
+        <h3>Case Converter</h3>
+        <p>Convert text between uppercase, lowercase, and sentence case.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="text">
+      <a href="https://demo.toolify.com/grammar-checker" target="_blank">
+        <i class="fas fa-spell-check"></i>
+        <h3>Grammar Checker</h3>
+        <p>Improve your writing with instant grammar and spell-checking.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="text">
+      <a href="https://demo.toolify.com/online-notepad" target="_blank">
+        <i class="fas fa-sticky-note"></i>
+        <h3>Online Notepad</h3>
+        <p>A simple and secure online notepad for quick notes.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="text">
+      <a href="https://demo.toolify.com/text-to-speech" target="_blank">
+        <i class="fas fa-volume-up"></i>
+        <h3>Text To Speech</h3>
+        <p>Convert written text into natural-sounding audio.</p>
+      </a>
+    </div>
+
+    <!-- Image Tools -->
+    <div class="tool-card" data-category="image">
+      <a href="https://demo.toolify.com/image-compressor" target="_blank">
+        <i class="fas fa-file-image"></i>
+        <h3>Image Compressor</h3>
+        <p>Reduce image file sizes without losing quality.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="image">
+      <a href="https://demo.toolify.com/image-to-text" target="_blank">
+        <i class="fas fa-image"></i>
+        <h3>Image to Text</h3>
+        <p>Extract text from images using advanced OCR technology.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="image">
+      <a href="https://demo.toolify.com/ai-background-remover" target="_blank">
+        <i class="fas fa-eraser"></i>
+        <h3>AI Background Remover</h3>
+        <p>Remove backgrounds from images with a single click.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="image">
+      <a href="https://demo.toolify.com/cartoonizer" target="_blank">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Cartoonizer</h3>
+        <p>Turn your photos into cartoon-style images.</p>
+      </a>
+    </div>
+
+    <!-- Design Tools -->
+    <div class="tool-card" data-category="design">
+      <a href="https://demo.toolify.com/color-palette-generator" target="_blank">
+        <i class="fas fa-palette"></i>
+        <h3>Color Palette Generator</h3>
+        <p>Create beautiful color schemes for your projects.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="design">
+      <a href="https://demo.toolify.com/qr-code-generator" target="_blank">
+        <i class="fas fa-qrcode"></i>
+        <h3>QR Code Generator</h3>
+        <p>Generate QR codes for websites, contacts, and more.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="design">
+      <a href="https://demo.toolify.com/responsive-design-tester" target="_blank">
+        <i class="fas fa-mobile-alt"></i>
+        <h3>Responsive Design Tester</h3>
+        <p>Test how your website looks on different devices.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="design">
+      <a href="https://demo.toolify.com/meme-generator" target="_blank">
+        <i class="fas fa-laugh"></i>
+        <h3>Meme Generator</h3>
+        <p>Create and share memes in seconds.</p>
+      </a>
+    </div>
+
+    <!-- Financial Tools -->
+    <div class="tool-card" data-category="finance">
+      <a href="https://demo.toolify.com/loan-emi-calculator" target="_blank">
+        <i class="fas fa-calculator"></i>
+        <h3>Loan EMI Calculator</h3>
+        <p>Calculate your monthly loan payments with ease.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="finance">
+      <a href="https://demo.toolify.com/currency-converter" target="_blank">
+        <i class="fas fa-money-bill-wave"></i>
+        <h3>Currency Converter</h3>
+        <p>Convert currencies at real-time exchange rates.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="finance">
+      <a href="https://demo.toolify.com/salary-tax-calculator" target="_blank">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <h3>Salary Tax Calculator</h3>
+        <p>Estimate your take-home pay after taxes.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="finance">
+      <a href="https://demo.toolify.com/gst-calculator" target="_blank">
+        <i class="fas fa-percent"></i>
+        <h3>GST Calculator</h3>
+        <p>Quickly calculate GST for your invoices.</p>
+      </a>
+    </div>
+
+    <!-- Cybersecurity Tools -->
+    <div class="tool-card" data-category="security">
+      <a href="https://demo.toolify.com/ip-address-lookup" target="_blank">
+        <i class="fas fa-search-location"></i>
+        <h3>IP Address Lookup</h3>
+        <p>Find details about any IP address.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="security">
+      <a href="https://demo.toolify.com/password-generator" target="_blank">
+        <i class="fas fa-key"></i>
+        <h3>Password Generator</h3>
+        <p>Create strong and secure passwords.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="security">
+      <a href="https://demo.toolify.com/hash-generator" target="_blank">
+        <i class="fas fa-hashtag"></i>
+        <h3>Hash Generator</h3>
+        <p>Generate MD5, SHA-256, and other hashes.</p>
+      </a>
+    </div>
+    <div class="tool-card" data-category="security">
+      <a href="https://demo.toolify.com/whois-lookup" target="_blank">
+        <i class="fas fa-globe"></i>
+        <h3>WHOIS Lookup</h3>
+        <p>Get domain registration details.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Ad Section (Middle) -->
+  <div class="ad-section">
+    <p>Ad Space (Middle) - Demo Ad Content</p>
+  </div>
+
+  <!-- Ad Section (Bottom) -->
+  <div class="ad-section">
+    <p>Ad Space (Bottom) - Demo Ad Content</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Toolify. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript for Toolify Homepage
+    document.addEventListener("DOMContentLoaded", function () {
+      // Theme Toggle
+      const themeToggle = document.createElement("button");
+      themeToggle.id = "theme-toggle";
+      themeToggle.innerHTML = "🌙";
+      document.body.appendChild(themeToggle);
+
+      themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        themeToggle.innerHTML = document.body.classList.contains("dark-theme") ? "☀️" : "🌙";
+      });
+
+      // Search Functionality
+      const searchInput = document.querySelector(".search-bar input");
+      const toolCards = document.querySelectorAll(".tool-card");
+
+      searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        toolCards.forEach((card) => {
+          const toolName = card.querySelector("h3").textContent.toLowerCase();
+          if (toolName.includes(searchTerm)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+
+      // Category Filtering
+      const categoryButtons = document.querySelectorAll(".category-buttons button");
+
+      categoryButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const category = button.getAttribute("data-category");
+          toolCards.forEach((card) => {
+            const toolCategory = card.getAttribute("data-category");
+            if (category === "all" || toolCategory === category) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
